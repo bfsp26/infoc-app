@@ -1,0 +1,27 @@
+<h2>Capital</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <app-country-search (onEnter)="search($event)" placeholder="Search country by capital name..."
+      (onDebounce)="suggestions($event)">
+    </app-country-search>
+  </div>
+</div>
+
+
+<ul class="list-group">
+  <li *ngFor="let item of suggestedCountries" class="list-group-item list-group-item-action">
+    <a class="nav-list" [routerLink]="['/capital', item.capital]">{{item.name.common}} ({{item.capital}})</a>
+  </li>
+</ul>
+
+<hr>
+
+<app-errors [term]="capital" [error]="error"></app-errors>
+
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</div>

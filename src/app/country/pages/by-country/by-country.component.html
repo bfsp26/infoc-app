@@ -1,0 +1,26 @@
+<h2>Common name</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <app-country-search (onEnter)="search($event)" (onDebounce)="suggestions($event)"
+      placeholder="Search country by common name...">
+    </app-country-search>
+  </div>
+</div>
+
+<ul class="list-group">
+  <li *ngFor="let item of suggestedCountries" class="list-group-item list-group-item-action">
+    <a class="nav-list" [routerLink]="['/country', item.cca3]">{{item.name.common}}</a>
+  </li>
+</ul>
+
+<hr>
+
+<app-errors [term]="term" [error]="error"></app-errors>
+
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</div>

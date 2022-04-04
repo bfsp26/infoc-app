@@ -1,0 +1,15 @@
+<h3><strong>Region:</strong> {{activeRegion | titlecase}}</h3>
+<hr>
+<div class="row">
+  <div class="col">
+    <button *ngFor="let region of regions" (click)="activateRegion(region)" [class]="setClass(region)">
+      {{region | titlecase}}
+    </button>
+  </div>
+</div>
+
+<div *ngIf="countries.length > 0" class="row">
+  <div class="col">
+    <app-country-table [countries]="countries"></app-country-table>
+  </div>
+</div>
